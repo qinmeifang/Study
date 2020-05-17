@@ -6,15 +6,18 @@
   </head>
   <body>
     <div id="app">
+      <input v-model="c"  type="text">
+      <p>{{c}}</p>
       <h1>{{song}}</h1>
-      <p>《{{album.name}}》是 {{singer}}2005年11月发行的专辑</p>
+      <p>《{{album.name}}》是 </p>
+      <p>{{singer}}2005年11月发行的专辑</p>
       <p>主打歌为{{album.theme}}</p>
       <p>作词人为{{singer}}等人</p>
       为你弹奏肖邦的{{album.theme}}
     </div>
     <script src="mvvm.js"></script>
     <script>
-      let mvvm = new mvvm({
+      let mvvm = new Mvvm({
         el: '#app',
         data: {
           song: '发如雪',
@@ -22,7 +25,8 @@
             theme: '夜曲',
             name: '十一月的肖邦'
           },
-          singer: '周杰伦'
+          singer: '周杰伦',
+          c:2
         }
       })
     </script>
