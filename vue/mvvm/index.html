@@ -1,13 +1,15 @@
 <html>
   <head>
     <title>
-      MVVM
+      MVVM 
     </title>
   </head>
   <body>
+    <!-- https://juejin.im/post/5abdd6f6f265da23793c4458#heading-11 -->
     <div id="app">
       <input v-model="c"  type="text">
       <p>{{c}}</p>
+      <p>sum: {{sum}}</p>
       <h1>{{song}}</h1>
       <p>《{{album.name}}》是 </p>
       <p>{{singer}}2005年11月发行的专辑</p>
@@ -27,6 +29,14 @@
           },
           singer: '周杰伦',
           c:2
+        },
+        computed: {
+          sum(){
+            return this.c + 2
+          }
+        },
+        mounted(){
+          console.log('所有事情都搞定了');
         }
       })
     </script>

@@ -1,27 +1,28 @@
-function Mvvm(options = {}) {
-  let data = this._data = options.data
-  console.log(data);
-  let c = { a: 1, b: 2 }
+function Mvvm(data) {
+  var newData = Object.assign({},data)
+  console.log('MVVM:');
+
   //  这里不理解，自己跑代码时，内部this不对
   for (let key in data) {
-    Object.defineProperty(c, key, {
+    let val = data[key]
+    Object.defineProperty(data, key, {
       configurable: true,
       get() {
-        console.log(111, this);
-        return 1;     // 如this.a = {b: 1}
+        return val;     // 如this.a = {b: 1}
       },
       set(newVal) {
-        this[key] = newVal;
+        console.log('set:',newVal);
+        val = newVal;
       }
     });
   }
-  console.log(c.a);
+}
   
+var data= {
+  a: 1,
+  b:2
 }
-var a3 = {
-  data: {
-    a: 1
-  }
-}
-
-new Mvvm(a3)
+new Mvvm(data)
+data.a = 22
+// console.log(data.b);
+console.log(data.a);

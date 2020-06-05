@@ -32,8 +32,9 @@ function observer(data) {
 
 function  Mvvm(options = {}) {
   let data = this._data = options.data
-  
+  this.options = options
   observer(data)
+  initComputed.call(this)
 
   for (let key in data) {
     Object.defineProperty(this, key, {
@@ -47,7 +48,9 @@ function  Mvvm(options = {}) {
       }
     });
   }
+  
   new Compile(options.el, this)
+  options.mounted.call(this)
   // this.song = '啦啦'
   // this.album.name = '十二月的肖邦'
 }
@@ -161,4 +164,19 @@ Wather.prototype.update = function () {
     val = val[key]
   })
   this.fn(val)
+}
+
+function initComputed() {
+  let vm = this
+  let computed = this.options.computed
+  Object.keys(computed).forEach(key => {
+    Object.defineProperty(vm, key, {
+      get: typeof computed[key] === 'function' ? computed[key] : computed[key].get,
+      set: function () {
+        console.log('set');
+
+      }
+    })
+    
+  })
 }
