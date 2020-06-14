@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function countdown(target) {
+      const now = Date.now()
+      const targetTime = new Date(target)
+      const diffVal = targetTime - now
+      let seconds = parseInt(diffVal / 1000)
+      const timer = setInterval(() => {
+        const minites = parseInt(seconds / 60)
+        const showSeconds = seconds % 60
+        console.log(`距离${target}还剩${minites}分钟，${showSeconds}秒`);
+        seconds--
+        if (seconds < 0) {
+          clearInterval(timer)
+        }
+      }, 1000);
+    }
+    countdown('2020/06/14 23:40:00')
+</script>
+</html>

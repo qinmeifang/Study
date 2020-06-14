@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Prototype</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+
+</body>
+<script>
+  function a(params) {
+    
+  }
+  console.dir(Object.__proto__);
+
+  console.dir(Function.__proto__);
+
+  function Person(name,a) {
+    this.name = name
+  }
+  var lisi = {}
+  console.log(Person.prototype.constructor === Person);
+  
+  console.log('对象', lisi);
+
+  var zhangsan = new Person('张三')
+  // 通过构造函数原型上的constructor，找到构造函数 =》 通过实例
+
+  console.log(111, zhangsan.__proto__.constructor);
+  
+  console.dir(Person.__proto__);
+
+  // console.log(Object.values({ a: 2, b: 4 }));
+
+  
+</script>
+
+</html>
